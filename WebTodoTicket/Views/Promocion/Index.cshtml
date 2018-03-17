@@ -1,0 +1,66 @@
+﻿@model IEnumerable<WebTodoTicket.Models.Promocion>
+
+@{
+    Layout = null;
+    ViewBag.Title = "Index";
+}
+
+<title>Inicio: @Session["nombreUsuario"]</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+    body, h1, h2, h3, h4, h5 {
+        font-family: "Poppins", sans-serif;
+    }
+
+    body {
+        font-size: 16px;
+    }
+</style>
+<!-- Header -->
+<body style="background-image:url(../../Recursos/70127073-cine-wallpapers.jpg); background-size:cover">
+
+    <div class="w3-container" style="margin-top:80px" id="showcase">
+        <h1 class="w3-jumbo"><b><a style="color:black" href="@Url.Action("Index", "Evento")"><i class="fa fa-home"></i></a> Mis Promociones</b></h1>
+        <a href="@Url.Action("Create","Promocion")" style="color: yellow" class="w3-button w3-block w3-black w3-left-align">Agregar Nueva Promocion</a>
+        <br />
+    </div>
+    <!-- Photo grid (modal) -->
+    <div class="w3-row-padding" style="background-color: black">
+        <table class="w3-table">
+            <tr style="color: white;">
+                <th hidden>
+                    @Html.DisplayNameFor(model => model.evento.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Usuario.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descripcion)
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr style="background-color:black; color:yellow">
+                    <td hidden>
+                        @Html.DisplayFor(modelItem => item.evento.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Usuario.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descripcion)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <a href="@Url.Action("Index", "Promocion")" style="color:white"><span class="glyphicon glyphicon-arrow-left"></span>Regresar</a>
+</body>

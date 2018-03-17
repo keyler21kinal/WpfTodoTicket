@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<body style="background-image: url(../../Recursos/thumb-1920-630733.jpg); background-size:cover; color:white">
+    <div class="container" style="height: 600px;">
+        <div class="navbar" style="margin-top: -50px">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" style="color:white; background-color:orangered" href="@Url.Action("Index","Home")">Ler's Ticket</a>
+                </div>
+                @if (Session["idUsuario"] == null)
+                {
+                    <div class="nav navbar-nav navbar-right">
+                        <a href="@Url.Action("Login", "Cuenta")" class="w3-button w3-deep-orange"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesion</a>
+                        <a href="@Url.Action("Registro", "Cuenta")" class="w3-button w3-deep-orange"><span class="glyphicon glyphicon-user"></span> Registrarse</a>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="w3-bar w3-xxxlarge" style="width:462px; margin-left: 790px;">
+            <a href="@Url.Action("Evento", "Evento")" class="w3-bar-item w3-button w3-deep-orange" style="width: 230px"><i class="fa fa-calendar" contextmenu="text"></i></a>
+            <a href="@Url.Action("Index", "TipoEvento")" class="w3-bar-item w3-button w3-deep-orange" style="width: 230px"><i class="fa fa-tags"></i></a>
+        </div>
+        <div class="w3-container">
+            <div class="w3-bar w3-xxxlarge" style="margin-left: -90px; margin-top: -90px">
+                <a class="w3-bar-item w3-button w3-black" style="width: 130px" data-toggle="collapse" data-target="#buscar"><i class="fa fa-search"></i></a>
+                <div id="buscar" class="collapse" style="font-size: 20px; margin-top: 30px">
+                @using (Html.BeginForm("Evento", "Evento", FormMethod.Get))
+                {
+                    <p>
+                        Término a buscar: @Html.TextBox("palabra")
+                        <input type="submit" class="w3-button w3-deep-orange" value="Buscar" />
+                    </p>
+                }
+                </div>
+            </div>
+        </div>
+    @*<div style="margin-left: 1030px; width: 179px;">
+        @Html.DropDownList("tiposEventos", new SelectList(Model.Select(x => x.TipoEvento.Descripcion)))
+        <a class="w3-button w3-blue" href="@Url.Action("Buscar", "Evento")?ID=3">Buscar</a>
+        <p>
+            @using (Html.BeginForm("BuscadorPalabra", "Evento", FormMethod.Get))
+            {
+            <p>
+                Término a buscar: @Html.TextBox("palabra")
+                <input type="submit" value="Buscar" />
+            </p>
+            }
+        </div>*@  
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+                <div class="w3-cell-row">
+                    <div class="w3-container w3-deep-orange w3-cell w3-cell-top">
+                        <br />
+                        <br />
+                        <center>
+                            <p style="font-size: 30px">COMPRA</p>
+                        </center>
+                        <br />
+                        <br />
+                    </div>
+                    <div class="w3-container w3-black w3-cell w3-cell-middle">
+                        <br />
+                        <br />
+                        <center>
+                            <p style="font-size: 30px">COMPRA</p>
+                        </center>
+                        <br />
+                        <br />
+                    </div>
+                    <div class="w3-container w3-deep-orange w3-cell w3-cell-bottom">
+                        <br />
+                        <br />
+                        <center>
+                            <p style="font-size: 30px">COMPRA</p>
+                        </center>
+                        <br />
+                        <br />
+                    </div>
+                </div>
+              <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/knockout")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,46 @@
+﻿@model WebTodoTicket.Models.Usuario
+
+@{
+    Layout = null;
+    ViewBag.Title = "Login";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+    <body style="background-image: url(../../Recursos/2560x1440_life-tree-fantasy-beautiful.jpg); background-size: cover">
+        <div class="container jumbotron" style="background-color: rgba(0,  32, 97, 0.6); color:white; font-family: 'Poiret One', cursive; width: 500px; margin-top:170px">
+            <div class="w3-container w3-blue text-center center-block">
+                <h2>Login</h2>
+            </div>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="container">
+                <div class="form-group" style="width: 350px">
+                    @Html.LabelFor(model => model.Correo, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10" style="margin-left: 3px; font-size: 0px">
+                        @Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Correo, "", new { @class = "required" })
+                    </div>
+                </div>
+                <div class="form-group" style="width: 350px">
+                    @Html.LabelFor(model => model.Contrasena, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10" style="margin-left: 3px; font-size: 0px">
+                        @Html.PasswordFor(model => model.Contrasena, new { @class = "form-control", @placeholder = "Wachtwoord" })
+                        @Html.ValidationMessageFor(model => model.Contrasena, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10 center-block" style="margin-top: 20px;">
+                        <input type="submit" value="Login" class="btn btn-danger" style="font-size: 20px;width: 150px" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+}
+

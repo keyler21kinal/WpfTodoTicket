@@ -1,0 +1,58 @@
+﻿@model WebTodoTicket.Models.Factura
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Factura</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Evento.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Evento.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ticket.TicketId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ticket.TicketId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nit)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FacturaId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

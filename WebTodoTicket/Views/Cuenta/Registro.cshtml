@@ -1,0 +1,64 @@
+﻿@model WebTodoTicket.Models.Usuario
+
+@{
+    Layout = null;
+    ViewBag.Title = "Registro";
+}
+<head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
+</head>
+<body style="background-image: url(../../Recursos/Super-heroes-Minimalist-Wallpapers-1920-1080-4.jpg); background-size: cover">
+    <div class="w3-border">
+        <div class="w3-container w3-margin w3-red">
+            <h1 style="margin-left: 100px; font-family: 'Russo One', sans-serif; font-size: 30px">Registro Usuarios</h1>
+        </div>
+    </div>
+
+    <div class="w3-card-4" style="width:50%; margin-left: 320px; margin-top: 10px">
+        <header class="w3-container w3-red">
+            <h1>Ingrese sus datos</h1>
+        </header>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal" style="color: white">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group" style="margin-left:60px">
+                    @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-left:60px">
+                    @Html.LabelFor(model => model.Correo, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Correo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-left:60px">
+                    @Html.LabelFor(model => model.Contrasena, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Contrasena, new { htmlAttributes = new { @class = "form-control password" } })
+                        @Html.ValidationMessageFor(model => model.Contrasena, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-left:460px">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="w3-button w3-red" />
+                    </div>
+                </div>
+            </div>
+        }
+        <footer class="w3-container w3-red">
+            <h5>Usuarios</h5>
+        </footer>
+    </div>
+</body>

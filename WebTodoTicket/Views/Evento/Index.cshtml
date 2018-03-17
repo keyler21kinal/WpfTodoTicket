@@ -1,0 +1,120 @@
+﻿@model IEnumerable<WebTodoTicket.Models.Evento>
+
+@{
+    Layout = null;
+    ViewBag.Title = "Index";
+}
+
+<html>
+<head>
+    <title>Inicio: @Session["nombreUsuario"]</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        body, h1, h2, h3, h4, h5 {
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar/menu -->
+   <nav class="w3-sidebar w3-blue w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar">
+        <br>
+        <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+        <div class="w3-container">
+            <img src="~/Recursos/103157_man_512x512.png" style="height: 100px; width:100px" />
+            <h3 class="w3-padding-64" style="margin-top: -25px"><b>Bienvenido<br>@Session["nombreUsuario"]</b></h3>
+        </div>
+
+        <div class="w3-bar-block">
+            <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white"><span class="glyphicon glyphicon-home"></span> Home</a>
+            <a href="@Url.Action("EditarCuenta","Cuenta")" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white"><span class="glyphicon glyphicon-user"></span> Cuenta</a>
+            <a href="@Url.Action("Create","Evento")" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white"><span class="glyphicon glyphicon-calendar"></span> Nuevo Evento</a>
+            <a href="@Url.Action("Index","Promocion")" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white"><span class="glyphicon glyphicon-tags"></span> Nueva Promocion</a>
+            <a href="@Url.Action("Index","Personal")" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white"><span class="glyphicon glyphicon-pencil"></span> Contratar Personal</a>
+            <div class="container" style="margin-top: 120px;">
+                <a class="btn w3-button w3-red" style="width: 100px" href="@Url.Action("BorrarCuenta", "Cuenta")">
+                    <span class="glyphicon glyphicon-trash active" style="font-size: 30px"></span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Top menu on small screens -->
+    <header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+        <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
+        <span>Company Name</span>
+    </header>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+        <!-- Header -->
+        <div class="w3-container" style="margin-top:80px" id="showcase">
+            <h1 class="w3-jumbo"><b>Mis Eventos</b></h1>
+            <hr style="width:50px;border:5px solid red" class="w3-round">
+        </div>
+
+        <!-- Photo grid (modal) -->
+        <div class="w3-row-padding" style="background-color: black">
+            <table class="w3-table">
+                <tr style="color: white;">
+                    <th>
+                        @Html.DisplayNameFor(model => model.TipoEvento.Descripcion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Usuario.Nombre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Descripcion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Fecha)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Lugar)
+                    </th>
+                </tr>
+                @foreach (var item in Model)
+            {
+                    <tr style="background-color: white">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TipoEvento.Descripcion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Usuario.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descripcion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Fecha)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Lugar)
+                        </td>
+                    </tr>
+                    }
+            </table>
+        </div>
+    </div>
+</body>
+</html>

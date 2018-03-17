@@ -1,0 +1,90 @@
+﻿@model IEnumerable<WebTodoTicket.Models.Evento>
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+        .mySlides {
+            display: none;
+        }
+    </style>
+</head>
+
+<body style="background-color: white; background-size: cover">
+    <div class="w3-content" style="max-width:800px; margin-top: -40%">
+        <img class="mySlides" src="~/Recursos/evento3.jpg" style="width:1320px; height: 50%; margin-left: -33%">
+        <img class="mySlides" src="~/Recursos/evento4.jpg" style="width:1320px; height: 50%; margin-left: -33%">
+        <img class="mySlides" src="~/Recursos/evento1.jpg" style="width:1320px; height: 50%; margin-left: -33%">
+    </div>
+    <script>
+        var myIndex = 0;
+        carousel();
+
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            myIndex++;
+            if (myIndex > x.length) { myIndex = 1 }
+            x[myIndex - 1].style.display = "block";
+            setTimeout(carousel, 2000); // Change image every 2 seconds
+        }
+    </script>
+
+    @*<div class="w3-main w3-content w3-padding" style="max-width:1200px; margin-top:100px">
+        <div class="w3-row-padding w3-padding-16 w3-center" id="food">
+            <div class="w3-quarter" style="width: 140%; border-color: black">
+                <header class="w3-container w3-deep-orange" style="width: 70%">
+                    <h1 color:white">Eventos</h1>
+                </header>
+                @foreach (var item in Model)
+            {
+                    <div class="w3-quarter" style="color:white">
+                        <div class="w3-container w3-center">
+                            <h3>@Html.DisplayFor(modelItem => item.Nombre)</h3>
+                            <img src="~/Recursos/icono-eventos.png" style="margin-left: -10px">
+                            <h5>@Html.DisplayFor(modelItem => item.Descripcion)</h5>
+                            <div class="w3-section w3-center">
+                                <button class="w3-button w3-green">Detalles</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>*@
+
+    @*<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
+
+
+        <div class="w3-row-padding w3-padding-16 w3-center" id="food">
+            <div class="w3-quarter" style="background-color: white">
+                <img src="~/Recursos/icono-eventos.png" alt="Sandwich" style="width:100%">
+                @for (var i = 0; i <= 0; i--)
+                {
+                    foreach (var item in Model)
+                    {
+                        <h3>@Html.DisplayFor(modelItem => item.Nombre)</h3>
+                        <p>@Html.DisplayFor(modelItem => item.Descripcion)</p>
+                    }
+                }
+            </div>
+            <div class="w3-quarter" style="background-color: white">
+                <img src="~/Recursos/icono-eventos.png" alt="Sandwich" style="width:100%">
+                @foreach (var item in Model)
+                {
+                    <h3>@Html.DisplayFor(modelItem => item.Nombre)</h3>
+                    <p>@Html.DisplayFor(modelItem => item.Descripcion)</p>
+                }
+            </div>
+        </div>
+    </div>*@
+</body>
+</html>

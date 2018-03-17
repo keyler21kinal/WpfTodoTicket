@@ -1,0 +1,33 @@
+﻿@model IEnumerable<WebTodoTicket.Models.Ticket>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+    <div class="w3-container w3-row-padding w3-margin-bottom" style="margin-top: -40%">
+
+@foreach (var item in Model)
+{
+        <div class="w3-quarter" style="width:43%; margin-left: 33px">
+            <div class="w3-card-2">
+                <header class="w3-container w3-deep-orange">
+                    <h3>@Html.DisplayFor(modelItem => item.Evento.Nombre)</h3>
+                </header>
+                <div class="w3-container" style="background-color: rgba(47,41,45, 0.9)">
+                    <p> Precio: @Html.DisplayFor(modelItem => item.Precio)</p>
+                    <hr>
+                    <img src="~/Recursos/calendar_icon2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px"><br />
+                    <p>@Html.DisplayFor(modelItem => item.Evento.Descripcion)</p>
+                    <p>@Html.DisplayFor(modelItem => item.Evento.Fecha), @Html.DisplayFor(modelItem => item.Evento.Lugar)</p>
+                </div>
+                <a class="w3-button w3-block w3-deep-orange" href="@Url.Action("Create","Factura")"> ¡Comprar!</a>
+            </div>
+            <br />
+        </div>
+}
+    </div>
+</body>
